@@ -101,6 +101,22 @@ void printll(node * head) {
 	} cout <<  newl;
 }
 
+//using Floyd's Cycle test aka Tortise and Hare
+bool detectLoop(node *&head) {
+	node *slowptr = head;
+	node *fastptr = head;
+
+	while (slowptr && fastptr && fastptr->next) {
+		slowptr = slowptr->next;
+		fastptr = fastptr->next->next;
+		if (slowptr == fastptr) {
+			return 1;
+		}
+	}
+	return 0;
+}
+
+
 int main() {
 
 
